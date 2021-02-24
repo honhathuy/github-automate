@@ -46,5 +46,13 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>2.13.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>net.lightbody.bmp</groupId>
+			<!-- To use the legacy, Jetty-based implementation, change the artifactId to browsermob-core -->
+			<artifactId>browsermob-core</artifactId>
+			<version>2.1.5</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

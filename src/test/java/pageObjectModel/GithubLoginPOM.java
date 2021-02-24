@@ -1,7 +1,5 @@
 package pageObjectModel;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -22,8 +20,6 @@ public class GithubLoginPOM {
 	public GithubLoginPOM(WebDriver driver) {
 		this.driver = driver;
 		this.stablerActions = new StablerActions(driver);
-		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
 	public boolean isCurrentPage() {
@@ -34,23 +30,12 @@ public class GithubLoginPOM {
 	}
 	
 	public void setUserName(String username) {
-//		stablerActions.click(usernameTextBoxSelector);
 		WebElement usernameTextBox = stablerActions.getElement(usernameTextBoxSelector);
 		
 		usernameTextBox.clear();
 		usernameTextBox.sendKeys(username);
 		System.out.println(usernameTextBox.getAttribute("value"));
 	}
-	
-	private boolean userNameIsSubmited() {
-		WebElement usernameTextBox = stablerActions.getElement(usernameTextBoxSelector);
-		String value = usernameTextBox.getAttribute("value");
-		
-		if (value.equals(""))
-			return false;
-		return true;
-	}
-	
 	
 	public void setPassword(String password) {
 		WebElement passwordTextBox = stablerActions.getElement(passwordTextBoxSelector);
@@ -60,15 +45,6 @@ public class GithubLoginPOM {
 		System.out.println(passwordTextBox.getAttribute("value"));
 	}
 	
-	private boolean passwordIsSubmited() {
-		WebElement passwordTextBox = stablerActions.getElement(passwordTextBoxSelector);
-		String value = passwordTextBox.getAttribute("value");
-		
-		if (value.equals(""))
-			return false;
-		return true;
-	}
-	
 	public void submit() {
 		stablerActions.click(signinBtnSelector);
 	}
@@ -76,12 +52,6 @@ public class GithubLoginPOM {
 	public void login(String username, String password) {
 		setUserName(username);
 		setPassword(password);
-		
-		if (!userNameIsSubmited() || !passwordIsSubmited()) {
-			setUserName(username);
-			setPassword(password);
-		}
-		
 		submit();
 	}
 	

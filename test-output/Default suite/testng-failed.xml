@@ -8,6 +8,7 @@
           <include name="setupTestData"/>
           <include name="cleanup"/>
           <include name="shouldLoginSuccessfully"/>
+          <include name="shouldLoginFail"/>
           <include name="setup"/>
           <include name="tearDown"/>
         </methods>

@@ -16,17 +16,14 @@ public class StablerActions {
 	}
 	
 	public WebElement getElement(By selector) {
-		wait.until(ExpectedConditions.elementToBeClickable(selector));
-		
-		return driver.findElement(selector);
+		return wait.until(ExpectedConditions.elementToBeClickable(selector));
 	}
 	
 	public void click(WebElement element) {
-		wait.until(ExpectedConditions.elementToBeClickable(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 	
 	public void click(By selector) {
-		wait.until(ExpectedConditions.elementToBeClickable(selector));
-		driver.findElement(selector).click();
+		wait.until(ExpectedConditions.elementToBeClickable(selector)).click();
 	}
 }
